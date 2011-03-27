@@ -7,7 +7,7 @@
 		<meta name="generator" content="MODX file generated with PP MODX Creator by tumba25 (online version)"/>
 		<meta name="generator" content="Phpbb.ModTeam.Tools (c#)"/>
 		<license><![CDATA[http://opensource.org/licenses/gpl-license.php GNU General Public License v2]]></license>
-		<title lang="en"><![CDATA[bbDKP Application plugin 1.2.5]]></title>
+		<title lang="en"><![CDATA[Bossprogress 1.0.0]]></title>
 		<description lang="en"><![CDATA[French languagefiles]]></description>
 		<description lang="fr"><![CDATA[fichiers français]]></description>
 		<description lang="de"><![CDATA[Franzözische Sprachdateien]]></description>
@@ -21,16 +21,15 @@
 				<homepage><![CDATA[http://www.bbdkp.com]]></homepage>
 				<email><![CDATA[sajaki9@gmail.com]]></email>
 				<contributions-group>
-					<contributions status="current" from="2009-01-01" position="Project leader"/>
-					<contributions status="past" from="2008-04-04" to="2009-01-01" position="Developer"/>
+					<contributions status="current" from="2008-04-04" position="Developer"/>
 				</contributions-group>
 			</author>
 		</author-group>
-		<mod-version>1.2.5</mod-version>
+		<mod-version>1.0.0</mod-version>
 		<installation>
 			<level>easy</level>
 			<time>300</time>
-			<target-version>3.0.7-PL1</target-version>
+			<target-version>3.0.8</target-version>
 		</installation>
 		<link-group>
 			<link type="parent" href="../install.xml" lang="en">Installation manual</link>

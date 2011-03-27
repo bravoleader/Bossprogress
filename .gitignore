@@ -1,0 +1,3 @@
+# ignore ds_store
+# Can ignore specific files
+.DS_Store
