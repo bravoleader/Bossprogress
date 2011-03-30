@@ -57,8 +57,8 @@
 		</author-group>
 		<mod-version>1.0</mod-version>
 		<installation>
-			<level>advanced</level>
-			<time>1200</time>
+			<level>easy</level>
+			<time>300</time>
 			<target-version>3.0.8</target-version>
 		</installation>
 		<link-group>
@@ -78,14 +78,14 @@
 	<action-group>
 		<copy>
 			<file from="root/bossprogress.php" to="bossprogress.php"/>
-			<file from="root/adm/style/dkp/*.*" to="adm/style/dkp/*.*"/>
-			<file from="root/includes/bbdkp/portal/*.*" to="includes/bbdkp/portal/*.*"/>
+			<file from="root/adm/style/dkp/acp_zoneprogress.html" to="adm/style/dkp/acp_zoneprogress.html"/>
+			<file from="root/adm/style/dkp/acp_bossprogress.html" to="adm/style/dkp/acp_bossprogress.html"/>			
+			<file from="root/includes/bbdkp/portal/bossprogressblock.php" to="includes/bbdkp/portal/bossprogressblock.php"/>
 			<file from="root/install/*.*" to="install/*.*"/>
 			<file from="root/language/en/mods/*.*" to="language/en/mods/*.*"/>
-			<file from="root/styles/prosilver/template/dkp/*.*" to="styles/prosilver/template/dkp/*.*"/>
-			<file from="root/styles/prosilver/template/dkp/block/*.*" to="styles/prosilver/template/dkp/block/*.*"/>
-			<file from="root/styles/prosilver/theme/*.*" to="styles/prosilver/theme/*.*"/>
-			<file from="root/styles/prosilver/theme/images/dkp/*.*" to="styles/prosilver/theme/images/dkp/*.*"/>
+			<file from="root/styles/prosilver/template/dkp/bossprogress.html" to="styles/prosilver/template/dkp/bossprogress.html"/>
+			<file from="root/styles/prosilver/template/dkp/block/bossprogress.html" to="styles/prosilver/template/dkp/block/bossprogress.html"/>
+			<file from="root/styles/prosilver/theme/bossprogress.css" to="styles/prosilver/theme/bossprogress.css"/>
 			<file from="root/umil/*.*" to="umil/*.*"/>
 		</copy>
 
@@ -96,7 +96,7 @@
 				<comment lang="de"><![CDATA[bossprogress css]]></comment>								
 				<find><![CDATA[@import url("bbdkp.css");]]></find>
 				<action type="after-add"><![CDATA[
-				@import url("bossprogress.css");
+@import url("bossprogress.css");
 ]]></action>
 			</edit>
 		</open>
@@ -107,7 +107,7 @@
 				<comment lang="fr"><![CDATA[bossprogress menu]]></comment>
 				<comment lang="de"><![CDATA[bossprogress menu]]></comment>								
 				<find><![CDATA[<a href="{U_LISTITEMHIST}">{L_MENU_ITEMHIST}</a>]]></find>
-				<action type="after-add"><![CDATA[&nbsp; &nbsp;<a href="{U_BP}">{L_MENU_BOSS}</a>
+				<action type="after-add"><![CDATA[	&nbsp; &nbsp;<a href="{U_BP}">{L_MENU_BOSS}</a>
 ]]></action>
 			</edit>
 		</open>
@@ -122,12 +122,8 @@ Post-install instructions :
 1) copy the image folders to /images manually. 
 Automod cannot handle it as it would lead to a timeout due to the size (21,9mb) ! 
 <file from="root/images/*.*" to="images/*.*" />   
-------------------------------------------------------------------------------
-2) Run Bossprogress database installation : install/installdkp.php 
-------------------------------------------------------------------------------
-3) Finish 
-Finally rename the install folder. 
-------------------------------------------------------------------------------
+2) Run Bossprogress database installation : install/index.php 
+3) Finally rename the install folder. 
 		Enjoy ;)]]></diy-instructions>
 <diy-instructions lang="fr"><![CDATA[le guide d’installation et mise à jour : /docs/install.html
 Liste des changements : /docs/changelog.html
@@ -137,11 +133,8 @@ Résumé des étapes de post-installation
 1) Copier ces fichiers vers le repertoire /images  
 En raison de la taille de ce répertoires (±21,mb), Automod ne sait pas les copier, cela causerait un 'timeout'. 
 <file from="root/images/*.*" to="images/*.*" />   
-------------------------------------------------------------------------------
 2) lancer l’installateur ou m.a.j, demarrez install/index.php
-------------------------------------------------------------------------------
 3) Rennome ou supprime le repertoire /install pour réactiver le forum.
-------------------------------------------------------------------------------
 Success ;)	]]></diy-instructions>		
 <diy-instructions lang="de"><![CDATA[Installations und Upgradeanweisungen : /docs/install.html
 Liste der änderungen : /docs/changelog.html
@@ -149,11 +142,8 @@ Liste der änderungen : /docs/changelog.html
 1) Kopiere diese Dateien zum Verzeichnis /images 
 Aus Berücksichtigung der Grösse der Verzeichnisse (±21mb), kann Automod dies nicht kopieren wegen Auszeit. 
 <file from="root/images/*.*" to="images/*.*" />   
-------------------------------------------------------------------------------
 2) Datenbank Installation order aktualisierung : install/index.php 
-------------------------------------------------------------------------------
 3) lösche, verschiebe oder benenne das Installations-Verzeichnis „install" damit das Forum wieder zugänglich wird.
-------------------------------------------------------------------------------
 
 Viel Spaß ;)	]]></diy-instructions>		
 	</action-group>

@@ -48,12 +48,12 @@
 			<action type="after-add"><![CDATA[@import url("bossprogress.css");]]></action>
       </edit>
     </open>
-	<open src="/styles/prosilver/template/dkp/dkpmenu.html">
+	<open src="/styles/subsilver2/template/dkp/dkpmenu.html">
 		<edit>
 			<comment lang="en"><![CDATA[bossprogress menu]]></comment>
 			<comment lang="fr"><![CDATA[bossprogress menu]]></comment>
 			<comment lang="de"><![CDATA[bossprogress menu]]></comment>								
-			<find><![CDATA[	&nbsp; &nbsp;<a class="dkpmenu" href="{U_LISTITEMHIST}">Item History</a>]></find>
+			<find><![CDATA[	&nbsp; &nbsp;<a class="dkpmenu" href="{U_LISTITEMHIST}">{L_MENU_ITEMHIST}</a>]]></find>
 			<action type="after-add"><![CDATA[	&nbsp; &nbsp;<a class="dkpmenu" href="{U_BP}">{L_MENU_BOSS}</a>]]></action>
 		</edit>
 	</open>

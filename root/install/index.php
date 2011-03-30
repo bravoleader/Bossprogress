@@ -116,7 +116,7 @@ switch ($game)
 
 $versions = array(
 
-    '1.2'    => array(
+    '1.0'    => array(
     	// bbdkp tables (this uses the layout from develop/create_schema_files.php and from phpbb_db_tools)
         'table_add' => array(
 		  array($table_prefix . 'bbdkp_zonetable', array(
@@ -189,6 +189,7 @@ $versions = array(
             
         'custom' => array( 
             'gameinstall',
+            'Bossprogressupdater',
        ), 
     ),
     
@@ -317,6 +318,42 @@ function gameinstall($action, $version)
 			break;
 	}
 					
+}
+
+
+function Bossprogressupdater($action, $version)
+{
+	global $db, $table_prefix, $umil, $phpbb_root_path, $phpEx;
+	switch ($action)
+	{
+		case 'install' :
+		case 'update' :
+            
+            $umil->table_row_remove($table_prefix . 'bbdkp_plugins',
+                array('name'  => 'Bossprogress')
+            );
+                        
+			$umil->table_row_insert($table_prefix . 'bbdkp_plugins', 	
+		    array(
+                array(
+        				'name'  => 'Bossprogress', 
+        				'value'  => '1', 
+        				'version'  => $version, 								
+        				'orginal_copyright'  => 'sz3', 				
+        				'bbdkp_copyright'  => 'bbDKP Team', 
+                    ),
+            ));		
+
+       		return array('command' => 'BOSSPROGRESS_INSTALL_MOD', 'result' => 'SUCCESS');
+			break; 
+			
+		case 'uninstall' :
+			// Run this when uninstalling
+
+			return array('command' => 'BOSSPROGRESS_UNINSTALL_MOD', 'result' => 'SUCCESS');
+			break;
+	
+	}
 }
 
 ?>
