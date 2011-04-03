@@ -81,6 +81,7 @@
 			<file from="root/adm/style/dkp/acp_zoneprogress.html" to="adm/style/dkp/acp_zoneprogress.html"/>
 			<file from="root/adm/style/dkp/acp_bossprogress.html" to="adm/style/dkp/acp_bossprogress.html"/>			
 			<file from="root/includes/bbdkp/portal/bossprogressblock.php" to="includes/bbdkp/portal/bossprogressblock.php"/>
+			<file from="root/includes/*.*" to="includes/*.*"/>			
 			<file from="root/install/*.*" to="install/*.*"/>
 			<file from="root/language/en/mods/*.*" to="language/en/mods/*.*"/>
 			<file from="root/styles/prosilver/template/dkp/bossprogress.html" to="styles/prosilver/template/dkp/bossprogress.html"/>
