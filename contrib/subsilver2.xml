@@ -6,9 +6,9 @@
 	<header>
 		<meta name="generator" content="MODX file generated with PP MODX Creator by tumba25 (online version)"/>
 		<license><![CDATA[http://opensource.org/licenses/gpl-license.php GNU General Public License v2]]></license>
-		<title lang="en"><![CDATA[Bossprogress plugin 1.0.0 - subsilver2 style]]></title>
-		<title lang="fr"><![CDATA[Bossprogress plugin 1.0.0 - Style subsilver2]]></title>
-		<title lang="de"><![CDATA[Bossprogress plugin 1.0.0 - subsilver2 Style]]></title>
+		<title lang="en"><![CDATA[Bossprogress plugin 1.0.1 - subsilver2 style]]></title>
+		<title lang="fr"><![CDATA[Bossprogress plugin 1.0.1 - Style subsilver2]]></title>
+		<title lang="de"><![CDATA[Bossprogress plugin 1.0.1 - subsilver2 Style]]></title>
 		<description lang="en"><![CDATA[subsilver2 edits]]></description>
 		<description lang="fr"><![CDATA[éditions à faire pour subsilver2]]></description>
 		<description lang="de"><![CDATA[subsilver2 edits zu machen]]></description>
@@ -23,7 +23,7 @@
 				</contributions-group>
 			</author>
 		</author-group>
-		<mod-version>1.0.0</mod-version>
+		<mod-version>1.0.1</mod-version>
 		<installation>
 			<level>easy</level>
 			<time>60</time>
@@ -58,6 +58,21 @@
 		</edit>
 	</open>
 		    
+		<open src="/styles/subsilver2/template/dkp/news_body.html">
+			<edit>
+				<comment lang="en"><![CDATA[add boss progress block]]></comment>
+				<comment lang="fr"><![CDATA[ajoute block dans portail]]></comment>
+				<comment lang="de"><![CDATA[neues Portalblock hineinschieben ]]></comment>								
+				<find><![CDATA[<!-- IF S_DISPLAY_RECRUIT -->
+<!-- INCLUDE dkp/block/recruitment.html -->
+<!-- ENDIF -->]]></find>
+				<action type="after-add"><![CDATA[
+
+<!-- IF S_BPSHOW -->
+<!-- INCLUDE dkp/block/bossprogress.html -->
+<!-- ENDIF -->]]></action>
+			</edit>
+		</open>
 		
 		<diy-instructions lang="en"><![CDATA[See general install.xml file]]></diy-instructions>
 		<diy-instructions lang="fr"><![CDATA[Voir install.xml]]></diy-instructions>
