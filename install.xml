@@ -10,11 +10,11 @@
 		<title lang="en"><![CDATA[Bossprogress]]></title>
 	<description lang="en"><![CDATA[Bossprogress is a plug-in to show an overview of all killed bosses on one page, aswell as a portal plugin]]></description>
 	<description lang="fr"><![CDATA[Bossprogress est une addition à bbDKP permettant de voir tous les boss sur une page, aisi qu'un block de portail]]></description>
-<author-notes lang="en"><![CDATA[Requirements : bbDKP 1.2.1]]>
+<author-notes lang="en"><![CDATA[Requirements : bbDKP 1.2.2]]>
 </author-notes>
-<author-notes lang="fr"><![CDATA[Requis : bbDKP 1.2.1 ]]>
+<author-notes lang="fr"><![CDATA[Requis : bbDKP 1.2.2 ]]>
 </author-notes>
-<author-notes lang="de"><![CDATA[Benötigt : bbDKP 1.2.1 ]]>
+<author-notes lang="de"><![CDATA[Benötigt : bbDKP 1.2.2 ]]>
 </author-notes>
 <author-group>
 			<author>
@@ -55,7 +55,7 @@
 				</contributions-group>
 			</author>
 		</author-group>
-		<mod-version>1.0</mod-version>
+		<mod-version>1.0.1</mod-version>
 		<installation>
 			<level>easy</level>
 			<time>300</time>
@@ -102,6 +102,22 @@
 			</edit>
 		</open>
 		
+		<open src="/styles/prosilver/template/dkp/news_body.html">
+			<edit>
+				<comment lang="en"><![CDATA[add boss progress block]]></comment>
+				<comment lang="fr"><![CDATA[ajoute block dans portail]]></comment>
+				<comment lang="de"><![CDATA[neues Portalblock hineinschieben ]]></comment>								
+				<find><![CDATA[<!-- IF S_DISPLAY_RECRUIT -->
+<!-- INCLUDE dkp/block/recruitment.html -->
+<!-- ENDIF -->]]></find>
+				<action type="after-add"><![CDATA[
+
+<!-- IF S_BPSHOW -->
+<!-- INCLUDE dkp/block/bossprogress.html -->
+<!-- ENDIF -->]]></action>
+			</edit>
+		</open>
+				
 		<open src="/styles/prosilver/template/dkp/dkpmenu.html">
 			<edit>
 				<comment lang="en"><![CDATA[bossprogress menu]]></comment>
