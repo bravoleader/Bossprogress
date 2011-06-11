@@ -10,11 +10,11 @@
 		<title lang="en"><![CDATA[Bossprogress]]></title>
 	<description lang="en"><![CDATA[Bossprogress is a plug-in to show an overview of all killed bosses on one page, aswell as a portal plugin]]></description>
 	<description lang="fr"><![CDATA[Bossprogress est une addition à bbDKP permettant de voir tous les boss sur une page, aisi qu'un block de portail]]></description>
-<author-notes lang="en"><![CDATA[Requirements : bbDKP 1.2.2]]>
+<author-notes lang="en"><![CDATA[Requirement : bbDKP 1.2.3]]>
 </author-notes>
-<author-notes lang="fr"><![CDATA[Requis : bbDKP 1.2.2 ]]>
+<author-notes lang="fr"><![CDATA[Requis : bbDKP 1.2.3]]>
 </author-notes>
-<author-notes lang="de"><![CDATA[Benötigt : bbDKP 1.2.2 ]]>
+<author-notes lang="de"><![CDATA[Benötigt : bbDKP 1.2.3]]>
 </author-notes>
 <author-group>
 			<author>
@@ -55,7 +55,7 @@
 				</contributions-group>
 			</author>
 		</author-group>
-		<mod-version>1.0.1</mod-version>
+		<mod-version>1.0.3</mod-version>
 		<installation>
 			<level>easy</level>
 			<time>300</time>
@@ -77,14 +77,14 @@
 	</header>
 	<action-group>
 		<copy>
-			<file from="root/bossprogress.php" to="bossprogress.php"/>
+			<file from="root/includes/bbdkp/module/bossprogress.php" to="includes/bbdkp/module/bossprogress.php"/>
 			<file from="root/adm/style/dkp/acp_zoneprogress.html" to="adm/style/dkp/acp_zoneprogress.html"/>
 			<file from="root/adm/style/dkp/acp_bossprogress.html" to="adm/style/dkp/acp_bossprogress.html"/>			
-			<file from="root/includes/bbdkp/portal/bossprogressblock.php" to="includes/bbdkp/portal/bossprogressblock.php"/>
+			<file from="root/includes/bbdkp/block/bossprogressblock.php" to="includes/bbdkp/block/bossprogressblock.php"/>
 			<file from="root/includes/acp/*.*" to="includes/acp/*.*"/>			
 			<file from="root/install/*.*" to="install/*.*"/>
 			<file from="root/language/en/mods/*.*" to="language/en/mods/*.*"/>
-			<file from="root/styles/prosilver/template/dkp/bossprogress.html" to="styles/prosilver/template/dkp/bossprogress.html"/>
+			<file from="root/styles/prosilver/template/dkp/module/bossprogress.html" to="styles/prosilver/template/dkp/module/bossprogress.html"/>
 			<file from="root/styles/prosilver/template/dkp/block/bossprogress.html" to="styles/prosilver/template/dkp/block/bossprogress.html"/>
 			<file from="root/styles/prosilver/theme/bossprogress.css" to="styles/prosilver/theme/bossprogress.css"/>
 			<file from="root/umil/*.*" to="umil/*.*"/>
@@ -109,16 +109,18 @@
 				<comment lang="de"><![CDATA[neues Portalblock hineinschieben ]]></comment>								
 				<find><![CDATA[<!-- IF S_DISPLAY_RECRUIT -->
 <!-- INCLUDE dkp/block/recruitment.html -->
+<br/>
 <!-- ENDIF -->]]></find>
 				<action type="after-add"><![CDATA[
 
 <!-- IF S_BPSHOW -->
 <!-- INCLUDE dkp/block/bossprogress.html -->
+<br/>
 <!-- ENDIF -->]]></action>
 			</edit>
 		</open>
 				
-		<open src="/styles/prosilver/template/dkp/dkpmenu.html">
+		<open src="/styles/prosilver/template/dkp/module/menu.html">
 			<edit>
 				<comment lang="en"><![CDATA[bossprogress menu]]></comment>
 				<comment lang="fr"><![CDATA[bossprogress menu]]></comment>
