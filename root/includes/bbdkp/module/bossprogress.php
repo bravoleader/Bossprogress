@@ -231,6 +231,7 @@ function displaygame($game_id, $game_name)
 		$template->assign_block_vars('zone', array(
 				'ZONEPROGRESSIMG'	=> $progrimg, 
 				'ZONEBACKIMG'		=> $background, 
+				'ZONENAME'			=> $zone['zonename'], 
 				'ZONECOMPLETE'		=> $zone['completed'],
 			    'ZONESTATS'			=> $zonestats,
 		));
