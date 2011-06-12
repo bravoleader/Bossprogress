@@ -154,10 +154,14 @@ $versions = array(
        ), 
     ),
     
-      '1.0.3'    => array(
-    
+      '1.0.2'    => array(
+			// compatible with 1.2.2		
+       ), 
+       
+       '1.0.3'    => array(
+			// compatible with 1.2.3    
         'custom' => array(          
-        	// auto install bossprogress for games installed...
+
     		'tableupdater103', 
             'gameinstall',
             'Bossprogressupdater',
