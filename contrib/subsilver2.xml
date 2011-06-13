@@ -48,6 +48,21 @@
 			<action type="after-add"><![CDATA[@import url("bossprogress.css");]]></action>
       </edit>
     </open>
+
+	<open src="/styles/subsilver2/template/dkp/dkpmain.html">
+			<edit>
+				<comment lang="en"><![CDATA[add boss progress module]]></comment>
+				<comment lang="fr"><![CDATA[ajoute module ]]></comment>
+				<comment lang="de"><![CDATA[neue module hineinschieben]]></comment>								
+				<find><![CDATA[<!-- [+] Bossprogress -->]]></find>
+				<action type="after-add"><![CDATA[
+<!-- IF S_BPSHOW -->
+<!-- INCLUDE dkp/module/bossprogress.html -->
+<!-- ENDIF -->
+]]></action>
+			</edit>
+	</open>
+    
 		<open src="/styles/subsilver2/template/dkp/news_body.html">
 			<edit>
 				<comment lang="en"><![CDATA[add boss progress block]]></comment>
@@ -65,6 +80,8 @@
 <!-- ENDIF -->]]></action>
 			</edit>
 		</open>
+		
+		
 	<open src="/styles/subsilver2/template/dkp/module/menu.html">
 		<edit>
 			<comment lang="en"><![CDATA[bossprogress menu]]></comment>

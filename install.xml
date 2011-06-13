@@ -101,6 +101,21 @@
 ]]></action>
 			</edit>
 		</open>
+
+		<open src="/styles/prosilver/template/dkp/dkpmain.html">
+			<edit>
+				<comment lang="en"><![CDATA[add boss progress module]]></comment>
+				<comment lang="fr"><![CDATA[ajoute module ]]></comment>
+				<comment lang="de"><![CDATA[neue module hineinschieben]]></comment>								
+				<find><![CDATA[<!-- [+] Bossprogress -->]]></find>
+				<action type="after-add"><![CDATA[
+<!-- IF S_BPSHOW -->
+<!-- INCLUDE dkp/module/bossprogress.html -->
+<!-- ENDIF -->
+]]></action>
+			</edit>
+		</open>
+				
 		
 		<open src="/styles/prosilver/template/dkp/news_body.html">
 			<edit>
