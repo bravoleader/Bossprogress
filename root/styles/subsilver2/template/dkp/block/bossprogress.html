@@ -5,32 +5,36 @@
  @credit http://www.schillmania.com/projects/dialog2 for css3 counded corners technique
  @credit jquery Tools for Tooltips
  @credit http://t.wits.sg for progressbar
- Subsilver2  version 1.2
+ Subsilver2  version 1.0.3
  -->
  
 <script type="text/javascript"> 
 
 $(document).ready( function() 
 {
+
+	<!-- BEGIN game -->
 	<!-- BEGIN zone --> 
-	$("#zone{zone.ZONEID}").tooltip({ position: "top center", effect: 'fade', opacity: 0.95});  
+	$("#game{game.GAME_ID}zone{game.zone.ZONEID}").tooltip({ position: "top center", effect: 'fade', opacity: 0.95});   
 	<!-- IF S_SHOWPROGRESSBAR -->
-		$("#progressbar{zone.ZONEID}").progressBar(
-	{	showText : false,
-		width  : 100,
-		height : 10,
-		boxImage : './images/progressbar/progressbar.gif',	// boxImage : image around the progress bar
-		barImage :
-		{
-		5:  './images/progressbar/progressbg_black.gif',
-		20:  './images/progressbar/progressbg_red.gif',
-		40:  './images/progressbar/progressbg_orange.gif',
-		60:  './images/progressbar/progressbg_yellow.gif',
-		100: './images/progressbar/progressbg_green.gif'
-		}
-	})
-	<!-- ENDIF -->
-	<!-- END zone -->});
+		$("#progressbar_{game.GAME_ID}_{game.zone.ZONEID}").progressBar(
+		{	showText : false,
+			width  : 100,
+			height : 10,
+			boxImage : './images/progressbar/progressbar.gif',	// boxImage : image around the progress bar
+			barImage :
+			{
+			5:  './images/progressbar/progressbg_black.gif',
+			20:  './images/progressbar/progressbg_red.gif',
+			40:  './images/progressbar/progressbg_orange.gif',
+			60:  './images/progressbar/progressbg_yellow.gif',
+			100: './images/progressbar/progressbg_green.gif'
+			}
+		}) 
+		<!-- ENDIF -->
+
+		<!-- END zone -->
+		<!-- END game -->}
 </script>	
 <br/>
 <table class="tablebg" width="100%" cellspacing = "1">
@@ -41,6 +45,12 @@ $(document).ready( function()
 </tbody>
 </table>
 
+
+<!-- BEGIN game -->
+<div style="width: 80%;  margin:0 auto; text-align: center;">
+<img src="{game.U_BPIMG}" alt="{game.GAME_ID}"/>
+</div>
+    
 <table class="tablebg" width="100%" cellpadding="2" cellspacing="0" border="0" >
           <colgroup span="2" >
           <col width="75%"></col>
@@ -48,17 +58,17 @@ $(document).ready( function()
           </colgroup>
     <!-- BEGIN zone -->
  	<tr class="row1">
-    <td align="center" class="{zone.CSSCLASS}">
+    <td align="center" class="{game.zone.CSSCLASS}">
     <div>
-    <a id="zone{zone.ZONEID}" ><strong>{zone.ZONENAME}</strong></a>
+    <a id="game{game.GAME_ID}zone{game.zone.ZONEID}" ><strong>{game.zone.ZONENAME}</strong></a>
     <div class="bbtooltip">
     	 <!-- top/right PNG -->
 	    <div class="bbinner">
 	    <div class="t"></div>
 				<br />
-				<h4>{zone.ZONENAME}</h4>
+				<h4>{game.zone.ZONENAME}</h4>
 				<!-- BEGIN boss -->
-			    <a class="bossprogress" href="{zone.boss.BOSSURL}" >{zone.boss.BOSSNAME}</a>&nbsp;<img src="./images/bossprogress/rp/{zone.boss.KILLED}.png" alt="{zone.boss.KILLED}" /><br />
+			    <a class="bossprogress" href="{game.zone.boss.BOSSURL}" >{game.zone.boss.BOSSNAME}</a>&nbsp;<img src="./images/bossprogress/rp/{zone.boss.KILLED}.png" alt="{game.zone.boss.KILLED}" /><br />
 			    <!-- END boss -->
 			    <br />
 	    </div>
@@ -67,13 +77,13 @@ $(document).ready( function()
    </div>
    </div>
    </td>
-    <td align="center" class="{zone.CSSCLASS}"><span>({zone.BOSSKILLS}/{zone.BOSSCOUNT})  </span></td>
+    <td align="center" class="{game.zone.CSSCLASS}"><span>({game.zone.BOSSKILLS}/{game.zone.BOSSCOUNT})  </span></td>
     </tr >
     
 	<!-- IF S_SHOWPROGRESSBAR -->
 	<tr class="row1">
 	<td align="center" colspan="2">
-	      <span id="progressbar{zone.ZONEID}" class="progressbar">{zone.COMPLETED}</span>
+	      <span id="progressbar_{game.GAME_ID}_{game.zone.ZONEID}" class="progressbar">{zone.COMPLETED}</span>
 	</td>
 	</tr>
 	<!-- ENDIF -->
@@ -81,3 +91,6 @@ $(document).ready( function()
     <!-- END zone -->
 	
 </table>
+   <!-- END game -->
+    
+    

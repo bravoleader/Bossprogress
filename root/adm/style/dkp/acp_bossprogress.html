@@ -10,6 +10,7 @@
 	<h1>{L_RP_BOSS}</h1>
 	<p>{L_RP_BOSS_ADD_EXPLAIN}</p>
 	<form id="acp_bossprogress_add" method="post" action="{U_ACTION}">
+	<input type="hidden" name="game_id" value="{GAME_ID}" />
 	<input type="hidden" name="bossid" value="{BOSS_ID}" />
 	<fieldset>
 	<dl>
@@ -67,6 +68,14 @@
 <p>{L_RP_BOSS_EXPLAIN}</p>
 
 <form method="post" id="acp_bossprogress_edit"  action="{F_CONFIG}" name="post">
+
+<input type="hidden" name="game_id" value="{GAME_ID}" />
+<select name="displaygame" class="input" onchange="javascript:form.submit();">
+    <!-- BEGIN game_row -->
+    <option value="{game_row.VALUE}"{game_row.SELECTED}>{game_row.OPTION}</option>
+    <!-- END game_row -->
+</select>
+
 <table border="0" width="100%" cellspacing="1" cellpadding="2">
 	<tr>
 		<th align="center" colspan="2">{L_GENERAL}</th>
