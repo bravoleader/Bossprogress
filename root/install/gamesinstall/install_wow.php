@@ -1241,7 +1241,7 @@ function install_wow()
 		$sql_ary[] = array( 'game_id' => 'wow', 'attribute_id'  => 27, 'language' =>  'de' , 'attribute' =>  'boss' , 'name' =>  'Chromaggus' ,  'name_short' =>  'Chromaggus' );
 		$sql_ary[] = array( 'game_id' => 'wow', 'attribute_id'  => 28, 'language' =>  'de' , 'attribute' =>  'boss' , 'name' =>  'Nefarian' ,  'name_short' =>  'Nefarian' );
 		$sql_ary[] = array( 'game_id' => 'wow', 'attribute_id'  => 29, 'language' =>  'de' , 'attribute' =>  'boss' , 'name' =>  'Lucifron' ,  'name_short' =>  'Lucifron' );
-		$sql_ary[] = array( 'game_id' => 'wow', 'attribute_id'  => 30, 'languag'showboss' =>  0>  'de' , 'attribute' =>  'boss' , 'name' =>  'Magmadar' ,  'name_short' =>  'Magmadar' );
+		$sql_ary[] = array( 'game_id' => 'wow', 'attribute_id'  => 30, 'language' =>  'de' , 'attribute' =>  'boss' , 'name' =>  'Magmadar' ,  'name_short' =>  'Magmadar' );
 		$sql_ary[] = array( 'game_id' => 'wow', 'attribute_id'  => 31, 'language' =>  'de' , 'attribute' =>  'boss' , 'name' =>  'Gehennas' ,  'name_short' =>  'Gehennas' );
 		$sql_ary[] = array( 'game_id' => 'wow', 'attribute_id'  => 32, 'language' =>  'de' , 'attribute' =>  'boss' , 'name' =>  'Garr' ,  'name_short' =>  'Garr' );
 		$sql_ary[] = array( 'game_id' => 'wow', 'attribute_id'  => 33, 'language' =>  'de' , 'attribute' =>  'boss' , 'name' =>  'Baron Geddon' ,  'name_short' =>  'Geddon' );
