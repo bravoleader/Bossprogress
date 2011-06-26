@@ -681,8 +681,7 @@ class acp_dkp_bossprogress extends bbDKP_Admin
 						$id = request_var('id', 0);
 						$sql = 'UPDATE ' . ZONEBASE . ' set ' . $db->sql_build_array('UPDATE', $data) . ' WHERE id = ' . $id . " AND game = '" . $game_id ."'";
 						$db->sql_query($sql);		
-						trigger_error( sprintf( $user->lang['RP_ZONEUPDATED'], $zonename) . $link, E_USER_NOTICE);
-
+						
 						$names = array( 
 							'name'		=> (string) $zonename,
 							'name_short'=> (string) $zonename_short,
@@ -692,7 +691,7 @@ class acp_dkp_bossprogress extends bbDKP_Admin
 								SET ' . $db->sql_build_array('UPDATE', $names) . ' 
 								WHERE attribute_id = ' . $id . " 
 								AND attribute='zone'  
-								AND game = '". $game_id ."' 
+								AND game_id = '". $game_id ."' 
 								AND language= '" . $config['bbdkp_lang'] ."'";
 						$db->sql_query($sql);	
 						
@@ -703,6 +702,7 @@ class acp_dkp_bossprogress extends bbDKP_Admin
 							$db->sql_query($sql);	
 						}
 						
+						trigger_error( sprintf( $user->lang['RP_ZONEUPDATED'], $zonename) . $link, E_USER_NOTICE);
 						
 					}
 					// or else it is a new zone
@@ -713,8 +713,8 @@ class acp_dkp_bossprogress extends bbDKP_Admin
 						$result = $db->sql_query($sql);
 						$id = (int) $db->sql_fetchfield('maxid') + 1;
 						$db->sql_freeresult($result);						
-						$data['id'] = $boss_id;  		
-					
+						$data['id'] = $id;  		
+						
 						$sql = 'INSERT INTO ' . ZONEBASE . ' ' . $db->sql_build_array('INSERT', $data) ;
 						$db->sql_query($sql);					
 						

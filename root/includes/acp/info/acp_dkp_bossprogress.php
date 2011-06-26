@@ -35,7 +35,7 @@ class acp_dkp_bossprogress_info
 		return array(
 			'filename'	=> 'acp_dkp_bossprogress',
 			'title'		=> 'ACP_DKP_BOSS',
-			'version'	=> '1.0.3',
+			'version'	=> '1.0.4',
 			'modes'		=> array(
 				'bossprogress'		=> array('title' => 'ACP_DKP_BOSS_BOSSPROGRESS', 'auth' => 'acl_a_dkp', 'cat' => array('ACP_DKP_BOSS') , 'display' => true),
 				'zoneprogress'		=> array('title' => 'ACP_DKP_BOSS_ZONEPROGRESS', 'auth' => 'acl_a_dkp', 'cat' => array('ACP_DKP_BOSS') , 'display' => true),
