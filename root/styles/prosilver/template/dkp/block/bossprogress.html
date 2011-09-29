@@ -8,16 +8,14 @@
  -->
  
 <script type="text/javascript"> 
-
-$(document).ready( function() 
+jQuery.noConflict();
+jQuery(document).ready( function() 
 {
 	<!-- BEGIN game -->
 	<!-- BEGIN zone -->  
-	$("#game{game.GAME_ID}zone{game.zone.ZONEID}").tooltip({ position: "top center", effect: 'fade', opacity: 0.95});  
-
-
+	jQuery("#game{game.GAME_ID}zone{game.zone.ZONEID}").tooltip({ position: "top left", relative: "true", effect: 'fade', opacity: 0.95});  
 	<!-- IF S_SHOWPROGRESSBAR -->
-		$("#progressbar_{game.GAME_ID}_{game.zone.ZONEID}").progressBar(
+		jQuery("#progressbar_{game.GAME_ID}_{game.zone.ZONEID}").progressBar(
 		{	showText : false,
 			width  : 100,
 			height : 10,
