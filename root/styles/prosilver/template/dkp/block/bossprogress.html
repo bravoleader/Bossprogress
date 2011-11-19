@@ -1,21 +1,21 @@
 <!--  
  @package bbDKP
- @version $Id: bossprogress.html 1288 2010-05-25 17:28:18Z Sajaki9 $
  @author Sajaki
  @credit http://www.schillmania.com/projects/dialog2 for css3 counded corners technique
  @credit jquery Tools for Tooltips
  @credit http://t.wits.sg for progressbar
- prosilver version 1.2
+ prosilver version 1.0.3
  -->
  
 <script type="text/javascript"> 
-
-$(document).ready( function() 
+jQuery.noConflict();
+jQuery(document).ready( function() 
 {
+	<!-- BEGIN game -->
 	<!-- BEGIN zone -->  
-	$("#zone{zone.ZONEID}").tooltip({ position: "top center", effect: 'fade', opacity: 0.95});  
+	jQuery("#game{game.GAME_ID}zone{game.zone.ZONEID}").tooltip({ position: "top left", relative: "true", effect: 'fade', opacity: 0.95});  
 	<!-- IF S_SHOWPROGRESSBAR -->
-		$("#progressbar{zone.ZONEID}").progressBar(
+		jQuery("#progressbar_{game.GAME_ID}_{game.zone.ZONEID}").progressBar(
 		{	showText : false,
 			width  : 100,
 			height : 10,
@@ -30,31 +30,41 @@ $(document).ready( function()
 			}
 		}) 
 	<!-- ENDIF -->
-	<!-- END zone -->});
+
+	<!-- END zone -->
+	<!-- END game -->
+});
 </script>
 <br/>
+ 	
  	<div class="panel">
     <div class="inner">
     <span class="corners-top"><span></span></span>    
     <h3 style="text-align:center">{L_BOSSPROGRESS}</h3>
+
+    <!-- BEGIN game -->
+    <div class="panel" style="width: 80%;  margin:0 auto; text-align: center;">
+    <img src="{game.U_BPIMG}" alt="{game.GAME_ID}"/>
+    </div>
     <table width="100%" cellpadding="2" cellspacing="0" border="0" >
           <colgroup span="2" >
           <col width="75%"></col>
           <col width="25%"></col>
           </colgroup>
+          
     <!-- BEGIN zone -->
  	<tr>
-    <td align="center" class="{zone.CSSCLASS}">
+    <td align="center" class="{game.zone.CSSCLASS}">
     <div>
-    <a id="zone{zone.ZONEID}" ><strong>{zone.ZONENAME}</strong></a>
+    <a id="game{game.GAME_ID}zone{game.zone.ZONEID}" ><strong>{game.zone.ZONENAME}</strong></a>
     <div class="bbtooltip">
     	 <!-- top/right PNG -->
 	    <div class="bbinner">
 	    <div class="t"></div>
 				<br />
-				<h4>{zone.ZONENAME}</h4>
+				<h4>{game.zone.ZONENAME}</h4>
 				<!-- BEGIN boss -->
-			    <a class="bossprogress" href="{zone.boss.BOSSURL}" >{zone.boss.BOSSNAME}</a>&nbsp;<img src="{T_IMAGES_PATH}/bossprogress/rp/{zone.boss.KILLED}.png" alt="{zone.boss.KILLED}" /><br />
+			    <a class="bossprogress" href="{game.zone.boss.BOSSURL}" >{game.zone.boss.BOSSNAME}</a>&nbsp;<img src="{T_IMAGES_PATH}/bossprogress/rp/{game.zone.boss.KILLED}.png" alt="{game.zone.boss.KILLED}" /><br />
 			    <!-- END boss -->
 			    <br />
 	    </div>
@@ -64,13 +74,13 @@ $(document).ready( function()
    </div>
    </div>
    </td>
-    <td align="center" class="{zone.CSSCLASS}"><span><strong>({zone.BOSSKILLS}/{zone.BOSSCOUNT})</strong></span></td>
+    <td align="center" class="{game.zone.CSSCLASS}"><span><strong>({game.zone.BOSSKILLS}/{game.zone.BOSSCOUNT})</strong></span></td>
     </tr>
     
     <!-- IF S_SHOWPROGRESSBAR -->
     <tr>
     <td align="center" colspan="2">
-	      <span id="progressbar{zone.ZONEID}" class="progressbar">{zone.COMPLETED}</span>
+	      <span id="progressbar_{game.GAME_ID}_{game.zone.ZONEID}" class="progressbar">{zone.COMPLETED}</span>
     </td>
 	</tr>
     <!-- ENDIF -->
@@ -78,6 +88,9 @@ $(document).ready( function()
     <!-- END zone -->
 	
     </table>
+    <!-- END game -->
+    
     <span class="corners-bottom"><span></span></span>
     </div>
     </div>
+    
