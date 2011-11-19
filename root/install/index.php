@@ -43,7 +43,7 @@ if (!file_exists($phpbb_root_path . 'install/index.' . $phpEx))
 }
 
 // The name of the mod to be displayed during installation.
-$mod_name = 'Bossprogress Plugin 1.0.4';
+$mod_name = 'Bossprogress Plugin 1.0.5';
 
 /*
 * The name of the config variable which will hold the currently installed version
@@ -173,6 +173,13 @@ $versions = array(
             'Bossprogressupdater',
        	), 
        ), 
+       
+		'1.0.5'    => array(
+			// version update
+			 'custom' => array(          
+            'Bossprogressupdater',
+       	), 
+       ),        
     
 );
 
@@ -391,8 +398,8 @@ function Bossprogressupdater($action, $version)
 
 			switch ($version)
 			{
-			    // only run when upgrading to 1.0.4
-				case '1.0.4':
+			    // only run when upgrading to 1.0.5
+				case '1.0.5':
 		            $umil->table_row_remove($table_prefix . 'bbdkp_plugins',
 		                array('name'  => 'Bossprogress')
 		            );

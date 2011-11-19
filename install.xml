@@ -7,14 +7,14 @@
 	<header>
 		<meta name="generator" content="MODX file generated with PP MODX Creator 1.0.1 by tumba25 (offline version)"/>
 		<license><![CDATA[http://opensource.org/licenses/gpl-license.php GNU General Public License v2]]></license>
-		<title lang="en"><![CDATA[Bossprogress]]></title>
+		<title lang="en"><![CDATA[Bossprogress 1.0.5]]></title>
 	<description lang="en"><![CDATA[Bossprogress is a plug-in to show an overview of all killed bosses on one page, aswell as a portal plugin]]></description>
 	<description lang="fr"><![CDATA[Bossprogress est une addition à bbDKP permettant de voir tous les boss sur une page, aisi qu'un block de portail]]></description>
-<author-notes lang="en"><![CDATA[Requirement : bbDKP 1.2.3]]>
+<author-notes lang="en"><![CDATA[Requirement : bbDKP 1.2.5]]>
 </author-notes>
-<author-notes lang="fr"><![CDATA[Requis : bbDKP 1.2.3]]>
+<author-notes lang="fr"><![CDATA[Requis : bbDKP 1.2.5]]>
 </author-notes>
-<author-notes lang="de"><![CDATA[Benötigt : bbDKP 1.2.3]]>
+<author-notes lang="de"><![CDATA[Benötigt : bbDKP 1.2.5]]>
 </author-notes>
 <author-group>
 			<author>
@@ -23,8 +23,7 @@
 				<homepage><![CDATA[http://www.bbdkp.com]]></homepage>
 				<email><![CDATA[sajaki9@gmail.com]]></email>
 				<contributions-group>
-					<contributions status="current" from="2009-01-01" position="Project leader"/>
-					<contributions status="past" from="2008-04-04" to="2009-01-01" position="Developer"/>
+					<contributions status="current" from="2008-04-04" position="Developer"/>
 				</contributions-group>
 			</author>
 			<author>
@@ -33,7 +32,7 @@
 				<homepage><![CDATA[http://aegis.dk]]></homepage>
 				<email><![CDATA[blazeflack@gmail.com]]></email>
 				<contributions-group>
-					<contributions status="current" from="2010-06-01" position="Supporter"/>
+					<contributions status="current" from="2010-06-01" position="Developer"/>
 				</contributions-group>
 			</author>
 			<author>
@@ -55,21 +54,16 @@
 				</contributions-group>
 			</author>
 		</author-group>
-		<mod-version>1.0.4</mod-version>
+		<mod-version>1.0.5</mod-version>
 		<installation>
 			<level>easy</level>
 			<time>300</time>
 			<target-version>3.0.8</target-version>
 		</installation>
 		<link-group>
-			<link type="template" href="contrib/subsilver2.xml" lang="en">subsilver2</link>
-			<link type="template" href="contrib/subsilver2.xml" lang="fr">subsilver2</link>
-			<link type="template" href="contrib/subsilver2.xml" lang="en">subsilver2</link>
-
 			<link type="language" lang="en" href="contrib/fr.xml">French</link>
 			<link type="language" lang="fr" href="contrib/fr.xml">Français</link>
 			<link type="language" lang="de" href="contrib/fr.xml">Franzözisch</link>
-
 			<link type="language" lang="en" href="contrib/de.xml">German</link>
 			<link type="language" lang="fr" href="contrib/de.xml">Allemand</link>
 			<link type="language" lang="de" href="contrib/de.xml">Deutsch</link>	
