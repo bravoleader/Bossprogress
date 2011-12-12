@@ -46,7 +46,9 @@ class acp_dkp_bossprogress extends bbDKP_Admin
 		    'aion'       => $user->lang['AION'],
 		    'FFXI'       => $user->lang['FFXI'],
 			'rift'       => $user->lang['RIFT'],
-			'swtor'      => $user->lang['SWTOR']
+			'swtor'      => $user->lang['SWTOR'],
+            'eve'        => $user->lang['EVE'],
+			'gw2'        => $user->lang['GW2'],            
 		);
 		
 		$installed_games = array();
@@ -61,6 +63,8 @@ class acp_dkp_bossprogress extends bbDKP_Admin
 		
 		$game_id = request_var('displaygame', '');
 		
+        //echo "*".$game_id;
+        //exit;
 		// dump gamelist to template
 		foreach ($installed_games as $id => $gamename)
 		{
@@ -80,11 +84,11 @@ class acp_dkp_bossprogress extends bbDKP_Admin
 			}
 		}
 
-				
+		//echo $game_id;		
         switch ($mode)
 		{
 			case 'bossprogress':
-				$link = '<br /><a href="'.append_sid("{$phpbb_admin_path}index.$phpEx", "i=dkp_bossprogress&amp;mode=bossprogress") . 
+				$link = '<br /><a href="'.append_sid("{$phpbb_admin_path}index.$phpEx", "i=dkp_bossprogress&amp;mode=bossprogress&amp;displaygame=$game_id") . 
 					'"><h3>'.$user->lang['RETURN_DKPINDEX'].'</h3></a>';
 				
 				$showadd = (isset($_POST['bpadd'])) ? true : false;
@@ -169,7 +173,7 @@ class acp_dkp_bossprogress extends bbDKP_Admin
 					$boss_killdate_year= request_var('boss_killdate_year', '');
 					$kdate = mktime(0,0,0,$boss_killdate_month,$boss_killdate_day , $boss_killdate_year);
 					$boss_show = request_var('boss_show', 0);
-
+                    //echo $game_id;
 					
 					$data = array(
 						'game'			=> (string) $game_id,
@@ -217,7 +221,8 @@ class acp_dkp_bossprogress extends bbDKP_Admin
 						$data['id'] = $boss_id;  				
 						
 						$sql = 'INSERT INTO ' . BOSSBASE . ' ' . $db->sql_build_array('INSERT', $data) ;
-						$db->sql_query($sql);					
+						//echo $sql;
+                        $db->sql_query($sql);					
 						
 						$names = array(
 							'attribute_id'	=>  $boss_id,
@@ -340,8 +345,8 @@ class acp_dkp_bossprogress extends bbDKP_Admin
 	                    	'BOSS_MM' => ($row2['killdate'] == 0) ? ' ' : date('m', $row2['killdate'])  ,
 	                    	'BOSS_YY' => ($row2['killdate'] == 0) ? ' ' : date('Y', $row2['killdate'])  ,
 
-	                    	'U_EDIT' 		=> append_sid("{$phpbb_admin_path}index.$phpEx", "i=dkp_bossprogress&amp;mode=bossprogress&amp;edit=1&amp;id={$row2['id']}")  ,
-	                    	'U_DELETE' 		=> append_sid("{$phpbb_admin_path}index.$phpEx", "i=dkp_bossprogress&amp;mode=bossprogress&amp;delete=1&amp;id={$row2['id']}")  ,  
+	                    	'U_EDIT' 		=> append_sid("{$phpbb_admin_path}index.$phpEx", "i=dkp_bossprogress&amp;mode=bossprogress&amp;edit=1&amp;id={$row2['id']}&amp;displaygame=$game_id")  ,
+	                    	'U_DELETE' 		=> append_sid("{$phpbb_admin_path}index.$phpEx", "i=dkp_bossprogress&amp;mode=bossprogress&amp;delete=1&amp;id={$row2['id']}&amp;displaygame=$game_id")  ,  
 							'S_ADD'   	=> true,
 	                    ));
 	                }
@@ -446,8 +451,9 @@ class acp_dkp_bossprogress extends bbDKP_Admin
 					    );
 					
 					$sql = $db->sql_build_query('SELECT', $sql_array);
-					$result = $db->sql_query($sql);
-	                $row = $db->sql_fetchrow($result); 
+					
+                    $result = $db->sql_query($sql);
+	                //$row = $db->sql_fetchrow($result); 
 	                while ( $row = $db->sql_fetchrow($result) )
 	                {
 	                	$zoneid = $row['id'];
@@ -469,9 +475,10 @@ class acp_dkp_bossprogress extends bbDKP_Admin
 						    				AND l.language= '" . $config['bbdkp_lang'] ."' ",
 							'ORDER_BY'	=> 'b.zoneid, b.id ASC ',
 						    );
-						    
+						//var_dump($sql_array2);    
 						$sql = $db->sql_build_query('SELECT', $sql_array2);
-						$resultx = $db->sql_query($sql);
+						//echo $sql."<br/>";
+                        $resultx = $db->sql_query($sql);
 	                	$now = getdate();
 		                while ( $row2 = $db->sql_fetchrow($resultx) )
 		                {
@@ -508,7 +515,7 @@ class acp_dkp_bossprogress extends bbDKP_Admin
 			                    'S_KILLDATE_DAY_OPTIONS'	=> $s_day_options,
 								'S_KILLDATE_MONTH_OPTIONS'	=> $s_month_options,
 								'S_KILLDATE_YEAR_OPTIONS'	=> $s_year_options,
-		                    
+		                        'GAME_ID'                   => $game_id,
 			                    'BOSS_WEBID' 		=> $row2['webid']  ,
 			                    'BOSS_KILLED' 	=> ($row2['killed'] == 1) ? ' checked="checked"' : '',
 		                    	'BOSS_KILLDATE' => ( !empty($row2['killdate']) ) ? date($config['bbdkp_date_format'], $row2['killdate']) : '&nbsp;',   
@@ -516,8 +523,8 @@ class acp_dkp_bossprogress extends bbDKP_Admin
 		                    	'BOSS_MM' => ($row2['killdate'] == 0) ? ' ' : date('m', $row2['killdate'])  ,
 		                    	'BOSS_YY' => ($row2['killdate'] == 0) ? ' ' : date('Y', $row2['killdate'])  ,
 			                    'BOSS_SHOW'   	=> ($row2['showboss'] == 1) ? ' checked="checked"' : '',
-		                    	'U_EDIT' 		=> append_sid("{$phpbb_admin_path}index.$phpEx", "i=dkp_bossprogress&amp;mode=bossprogress&amp;edit=1&amp;id={$row2['id']}")  ,
-		                    	'U_DELETE' 		=> append_sid("{$phpbb_admin_path}index.$phpEx", "i=dkp_bossprogress&amp;mode=bossprogress&amp;delete=1&amp;id={$row2['id']}")  ,  
+		                    	'U_EDIT' 		=> append_sid("{$phpbb_admin_path}index.$phpEx", "i=dkp_bossprogress&amp;mode=bossprogress&amp;edit=1&amp;id={$row2['id']}&amp;displaygame=$game_id")  ,
+		                    	'U_DELETE' 		=> append_sid("{$phpbb_admin_path}index.$phpEx", "i=dkp_bossprogress&amp;mode=bossprogress&amp;delete=1&amp;id={$row2['id']}&amp;displaygame=$game_id")  ,  
 		                    ));
 		                }
 		                $db->sql_freeresult($resultx);
@@ -540,7 +547,7 @@ class acp_dkp_bossprogress extends bbDKP_Admin
 			case 'zoneprogress':
 					
 				// page layout
-				$link = '<br /><a href="'.append_sid("{$phpbb_admin_path}index.$phpEx", "i=dkp_bossprogress&amp;mode=zoneprogress") . 
+				$link = '<br /><a href="'.append_sid("{$phpbb_admin_path}index.$phpEx", "i=dkp_bossprogress&amp;mode=zoneprogress&amp;displaygame=$game_id") . 
 					'"><h3>'.$user->lang['RETURN_DKPINDEX'].'</h3></a>';
 				$submitlist = (isset($_POST['bpsave'])) ? true : false;
 				$edit = (isset($_GET['edit'])) ? true : false;
@@ -549,11 +556,13 @@ class acp_dkp_bossprogress extends bbDKP_Admin
 				$submitzone = (isset($_POST['addnew'])) ? true : false;
 				$move_up = (isset($_GET['move_up'])) ? true : false;
 				$move_down = (isset($_GET['move_down'])) ? true : false;  
-
+                //$game_id = request_var ("game_id","");
+//                echo $game_id;
 
 				// user pressed the arrows
 				if ($move_down or $move_up)
 				{
+				    //$game_id = request_var ("game_id","");
 					$sql = 'SELECT sequence FROM ' . ZONEBASE . ' where id =  ' . request_var('id', 0) . " AND game = '" . $game_id ."'"; 
 					$result = $db->sql_query($sql);
 					$current_sequence = (int) $db->sql_fetchfield('sequence', 0, $result);
@@ -638,7 +647,8 @@ class acp_dkp_bossprogress extends bbDKP_Admin
 						'S_KILLDATE_DAY_OPTIONS'	=> $s_day_options,
 						'S_KILLDATE_MONTH_OPTIONS'	=> $s_month_options,
 						'S_KILLDATE_YEAR_OPTIONS'	=> $s_year_options,
-						'S_ZONELIST_OPTIONS'		=> $s_zonelist_options, 
+						'S_ZONELIST_OPTIONS'		=> $s_zonelist_options,
+                        'GAME_ID'                   => $game_id, 
 						'S_ADD'   	=> true,
 	                 )
 	    			);
@@ -660,7 +670,7 @@ class acp_dkp_bossprogress extends bbDKP_Admin
 					$zone_show = request_var('showzone', 0);
 					$zone_showportal = request_var('showzoneportal', 0); 
 					$zonesequence = request_var('zonesequence', 0);
-					
+					$game_id = request_var ("game_id","");
 					$data = array( 
 						'imagename'		=> (string) $zone_image,
 						'game'			=> (string) $game_id,
@@ -880,6 +890,7 @@ class acp_dkp_bossprogress extends bbDKP_Admin
 					//
 					//delete a zone
 					//
+                    //echo $game_id;
 					$id = request_var('id', 0); 
 					if (confirm_box(true))
 					{
@@ -963,10 +974,10 @@ class acp_dkp_bossprogress extends bbDKP_Admin
                         'ZONE_URL'			=> sprintf($user->lang[strtoupper($game_id).'_ZONEURL'], $row['webid']),         
 	                    'ZONE_SHOW'   		=> ($row['showzone'] == 1) ? ' checked="checked"' : '',
                     	'ZONE_SHOW_PORTAL'  => ($row['showzoneportal'] == 1) ? ' checked="checked"' : '',
-                    	'U_EDIT' 		=> append_sid("{$phpbb_admin_path}index.$phpEx", "i=dkp_bossprogress&amp;mode=zoneprogress&amp;edit=1&amp;id={$row['id']}")  ,
-                    	'U_DELETE' 		=> append_sid("{$phpbb_admin_path}index.$phpEx", "i=dkp_bossprogress&amp;mode=zoneprogress&amp;delete=1&amp;id={$row['id']}")  ,  
-						'U_MOVE_UP'		=> append_sid("{$phpbb_admin_path}index.$phpEx", "i=dkp_bossprogress&amp;mode=zoneprogress&amp;move_up=1&amp;id={$row['id']}"), 
-						'U_MOVE_DOWN'	=> append_sid("{$phpbb_admin_path}index.$phpEx", "i=dkp_bossprogress&amp;mode=zoneprogress&amp;move_down=1&amp;id={$row['id']}"), 
+                    	'U_EDIT' 		=> append_sid("{$phpbb_admin_path}index.$phpEx", "i=dkp_bossprogress&amp;mode=zoneprogress&amp;edit=1&amp;id={$row['id']}&amp;displaygame=$game_id")  ,
+                    	'U_DELETE' 		=> append_sid("{$phpbb_admin_path}index.$phpEx", "i=dkp_bossprogress&amp;mode=zoneprogress&amp;delete=1&amp;id={$row['id']}&amp;displaygame=$game_id")  ,  
+						'U_MOVE_UP'		=> append_sid("{$phpbb_admin_path}index.$phpEx", "i=dkp_bossprogress&amp;mode=zoneprogress&amp;move_up=1&amp;id={$row['id']}&amp;displaygame=$game_id"), 
+						'U_MOVE_DOWN'	=> append_sid("{$phpbb_admin_path}index.$phpEx", "i=dkp_bossprogress&amp;mode=zoneprogress&amp;move_down=1&amp;id={$row['id']}&amp;displaygame=$game_id"), 
                     
                     ));
                 }
