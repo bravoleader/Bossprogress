@@ -63,8 +63,6 @@ class acp_dkp_bossprogress extends bbDKP_Admin
 		
 		$game_id = request_var('displaygame', '');
 		
-        //echo "*".$game_id;
-        //exit;
 		// dump gamelist to template
 		foreach ($installed_games as $id => $gamename)
 		{
@@ -83,8 +81,7 @@ class acp_dkp_bossprogress extends bbDKP_Admin
 				break 1;	
 			}
 		}
-
-		//echo $game_id;		
+		
         switch ($mode)
 		{
 			case 'bossprogress':
@@ -173,7 +170,6 @@ class acp_dkp_bossprogress extends bbDKP_Admin
 					$boss_killdate_year= request_var('boss_killdate_year', '');
 					$kdate = mktime(0,0,0,$boss_killdate_month,$boss_killdate_day , $boss_killdate_year);
 					$boss_show = request_var('boss_show', 0);
-                    //echo $game_id;
 					
 					$data = array(
 						'game'			=> (string) $game_id,
@@ -221,7 +217,6 @@ class acp_dkp_bossprogress extends bbDKP_Admin
 						$data['id'] = $boss_id;  				
 						
 						$sql = 'INSERT INTO ' . BOSSBASE . ' ' . $db->sql_build_array('INSERT', $data) ;
-						//echo $sql;
                         $db->sql_query($sql);					
 						
 						$names = array(
@@ -453,7 +448,7 @@ class acp_dkp_bossprogress extends bbDKP_Admin
 					$sql = $db->sql_build_query('SELECT', $sql_array);
 					
                     $result = $db->sql_query($sql);
-	                //$row = $db->sql_fetchrow($result); 
+	                //$row = $db->sql_fetchrow($result); //commented because it made the first row disappear
 	                while ( $row = $db->sql_fetchrow($result) )
 	                {
 	                	$zoneid = $row['id'];
@@ -475,9 +470,9 @@ class acp_dkp_bossprogress extends bbDKP_Admin
 						    				AND l.language= '" . $config['bbdkp_lang'] ."' ",
 							'ORDER_BY'	=> 'b.zoneid, b.id ASC ',
 						    );
-						//var_dump($sql_array2);    
+    
 						$sql = $db->sql_build_query('SELECT', $sql_array2);
-						//echo $sql."<br/>";
+
                         $resultx = $db->sql_query($sql);
 	                	$now = getdate();
 		                while ( $row2 = $db->sql_fetchrow($resultx) )
@@ -556,8 +551,6 @@ class acp_dkp_bossprogress extends bbDKP_Admin
 				$submitzone = (isset($_POST['addnew'])) ? true : false;
 				$move_up = (isset($_GET['move_up'])) ? true : false;
 				$move_down = (isset($_GET['move_down'])) ? true : false;  
-                //$game_id = request_var ("game_id","");
-//                echo $game_id;
 
 				// user pressed the arrows
 				if ($move_down or $move_up)
